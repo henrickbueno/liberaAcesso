@@ -1,0 +1,51 @@
+body{
+   background: #efefef; 
+}
+
+.container{
+    background: white;
+    width: 70%;
+    margin-top: 1%;
+    border-style: outset;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.color-icon{
+    color: green;
+}
+
+.icon-block{
+    color: red;
+}
+
+.cabecalho{
+    background:#ffb400;
+    height: 100px;
+}
+
+.imgBg{
+    height: 126px;
+    margin-top: -16px;
+    float: left;
+}
+
+.menu{
+    padding: 45px;
+}
+
+ol li a {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 30px;
+    color:#212529;
+}
+
+ol li a:hover{
+    font-size: 22px;
+    color: #212529;
+}
+
+#badge{
+    font-size: 17px;
+}
