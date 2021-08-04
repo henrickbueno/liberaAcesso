@@ -10,7 +10,7 @@ $(function() {
 
     function liberaBloqueia(id, action, btn) {
         $.ajax({
-            url: 'index.php',
+            url: 'menu.php',
             type: 'post',
             dataType: 'json',
             data: {id, action},
@@ -57,7 +57,7 @@ $(function() {
 
     function adcSeteDias(id, action, btn) {
         $.ajax({
-            url : 'index.php',
+            url : 'menu.php',
             type: 'post',
             dataType: 'json',
             data : {id, action},
