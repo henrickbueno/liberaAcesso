@@ -34,13 +34,13 @@
 								<div class="input-group-append">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="usuario" class="form-control input_user" value="" placeholder="Usuario">
+								<input type="text" name="usuario" class="form-control input_user" value="" placeholder="Usuario" required>
 							</div>
 							<div class="input-group mb-2">
 								<div class="input-group-append">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="senha" class="form-control input_pass" value="" placeholder="Senha">
+								<input type="password" name="senha" class="form-control input_pass" value="" placeholder="Senha" required>
 							</div>
 
 							<div class="d-flex justify-content-center mt-3 login_container">

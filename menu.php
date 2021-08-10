@@ -19,15 +19,12 @@
     // exit;
     $usuario = addslashes($_POST['usuario']);
 	$senha   = addslashes($_POST['senha']);
-        foreach ($resultado as $indice => $login) {
-            if ($login['nome'] == $usuario || $login['senha'] == $senha) {
-                echo ('ACESSO LIBERADO');
-                // header('location: menu.php');
-            }else{
-                echo ('ACESSO NEGADO');
-                // header('location: index.php');
-            }
-}
+
+    foreach ($resultado as $indice => $login) {
+        if ($login['nome'] != $usuario || $login['senha'] != $senha) {
+            header('location: index.php');
+        }
+    }
 
 
     if (isset($_POST['id'])) {
