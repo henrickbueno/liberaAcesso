@@ -88,7 +88,21 @@
             return $stmt->fetch(PDO::FETCH_ASSOC)['id'];
         }
 
-        //QUERO PARA INSERIR A COMPRA DE CREDITOS NO BANCO DE DADOS
+        //QUERY PARA TRAZER OS CREDITOS DAS EMPRESAS
+        public function getCreditosRestantes($id)
+        {
+            $stmt = $this->pdo->prepare("SELECT SUM(qty - amount_consumed) AS total, type
+                                        FROM organization_data_packets AS ODP 
+                                        INNER JOIN data_packets AS DP ON ODP.data_packet_id = DP.id 
+                                        WHERE organization_id = :id
+                                        GROUP BY DP.type;");
+            $stmt->execute([
+                "id" => $id
+            ]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } 
+
+        //QUERY PARA INSERIR A COMPRA DE CREDITOS NO BANCO DE DADOS
         public function creditaAmouth($organizationID, $user, $dataPacketId, $amountConsumed)
         {
             $stmt = $this->pdo->prepare("INSERT INTO organization_data_packets (
