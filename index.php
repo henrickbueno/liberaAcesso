@@ -79,6 +79,7 @@
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
+                        <th>ID</th>
                         <th> NOME </th>
                         <th> STATUS </th>
                         <th style="text-align: center;">  PR&Oacute;XIMO BLOQUEIO</th>
@@ -87,12 +88,12 @@
                     </tr>
                 </thead> <?php 
                 foreach ($listaDeEmpresas as $indice => $empresa) { ?>
+                    
                     <tr>
                         <?php 
-                            
-                            // COLUNA NOME DAS EMPRESAS
-                            
+                            // COLUNA ID E NOME DAS EMPRESAS
                             if (!empty($empresa['name'])) { ?>
+                                <td><?= $empresa['id'] ?></td>
                                 <td><?= $empresa['name'] ?></td> <?php 
                             }
                             
@@ -121,23 +122,25 @@
                                 <td style="text-align: center;">
                                     <?php 
                                         $creditoSms = $newPdo->getCreditosRestantes($empresa['id']);
-
+                                        $hasCredits = false;
                                         foreach ($creditoSms as $key => $value) {
-                                            if (isset($value['type']) && $value['type'] == 'S') { ?>
+                                            if (!empty($value['type']) && $value['type'] == 'S') { ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
                                                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                                                 </svg> <?php 
                                                 echo $value['total']; 
+                                                $hasCredits = true;
                                             }
-                                        }
-                                    
-                                        foreach ($creditoSms as $key => $value) {
                                             if (!empty($value['type']) && $value['type'] == 'Q') { ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                                 </svg> <?php
                                                 echo $value['total']; 
+                                                $hasCredits = true;
                                             }
+                                        }
+                                        if (!$hasCredits) {
+                                            echo "-";
                                         }
                                     ?>
                                 </td>
