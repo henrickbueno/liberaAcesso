@@ -75,7 +75,7 @@
 
         <!-- FIM DO MODAL -->
         
-        <div class="card-body container">
+        <div class="card-body container" style=" max-width: 1550px; min-width: 1012px;">
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
