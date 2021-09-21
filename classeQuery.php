@@ -1,10 +1,10 @@
 <?php
     class liberaAcessoEmpresas {
 
-        //estanciar o pdo
+        // propriedade para estanciar o pdo
         private $pdo;
 
-        //função para conexao com o banco de dados
+        //metodo para conexao com o banco de dados
         public function __construct($dbname, $user, $senha)
         {
             try { //parametros para o PDO = NOME DO BANCO DE DADOS, NOME DO USUARIO (DEFAULT ->ROOT), SENHA (DEFAULT "")
@@ -16,14 +16,14 @@
             }
         }
 
-        // função para fazer o SELECT no bando de dados
+        // metodo para fazer o SELECT no bando de dados
         public function buscaDadosEmpresas()
         {
             $select = $this->pdo->query("SELECT id, name, confirmated_at, created_at  FROM organizations");
             return $select->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // FUNCAO PARA COLOCAR A DATA DE HOJE NO BANCO DE DADOS
+        // metodo PARA COLOCAR A DATA DE HOJE NO BANCO DE DADOS
         public function liberaEmpresa($id)
         {   
             $stmt = $this->pdo->prepare("UPDATE organizations SET confirmated_at = NOW() WHERE id = :id");
@@ -32,7 +32,7 @@
             ]);
         }
 
-        //FUNCAO PARA TIRAR A DATA DO BANCO DE DADOS
+        //metodo PARA TIRAR A DATA DO BANCO DE DADOS
         public function bloqueiaEmpresa($id)
         {
             $stmt = $this->pdo->prepare("UPDATE organizations SET confirmated_at = null WHERE id = :id");
@@ -41,7 +41,7 @@
             ]);
         }
 
-        // FUNCAO PARA ADICIONAR 7 DIAS
+        // metodo PARA ADICIONAR 7 DIAS
         public function addSeteDias($id)
         {
             $stmt = $this->pdo->prepare('UPDATE organizations SET created_at = NOW() WHERE id = :id');
