@@ -1,6 +1,6 @@
 <?php
 $usuario = 'suportecrm';
-$senha = 'cremerson';
+$senha = 'suportecrm';
 
 session_start();
 if (isset($_POST["usuario"]) && isset($_POST["senha"])){
