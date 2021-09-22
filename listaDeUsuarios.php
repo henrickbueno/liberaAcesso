@@ -1,7 +1,8 @@
 <?php
+    include('verificaLogin.php');
+    include('conexao.php');
     require_once 'classeQuery.php';
 
-    $newPdo = new liberaAcessoEmpresas("organizations", "root", "");
     $listaDeEmpresas = $newPdo->buscaDadosUsuarios();
     
     if (isset($_POST['id'])) {
@@ -37,7 +38,7 @@
                 <li><a href="index.php">Lista de Empresas</a></li>
             </ol>
         </nav>
-        <div class="card-body container">
+        <div class="card-body container" style=" max-width: 1550px; min-width: 1012px;">
         <span class="badge text-dark" id="badge">Empresa: <?php echo ucfirst($_GET['empresa_name']); ?></span>
             <table class="table table-hover">
                 <thead class="thead-dark">

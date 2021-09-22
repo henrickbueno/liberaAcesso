@@ -1,5 +1,14 @@
 <?php
+$usuario = 'suportecrm';
+$senha = 'cremerson';
 
+session_start();
+if (isset($_POST["usuario"]) && isset($_POST["senha"])){
+	if ($_POST["usuario"] == $usuario && $_POST["senha"] == $senha) {
+		$_SESSION['usuario'] = $_POST["usuario"];
+		header('location: index.php');
+	}
+}
 
 ?>
 
@@ -27,21 +36,21 @@
 						</div>
 					</div>
 					<div class="d-flex justify-content-center form_container">
-						<form>
+						<form action="" method="post">
 							<div class="input-group mb-3">
 								<div class="input-group-append">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" name="" class="form-control input_user" value="" placeholder="Usuario">
+								<input type="text" name="usuario" class="form-control input_user" value="" placeholder="Usuario">
 							</div>
 							<div class="input-group mb-2">
 								<div class="input-group-append">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" name="" class="form-control input_pass" value="" placeholder="Senha">
+								<input type="password" name="senha" class="form-control input_pass" value="" placeholder="Senha">
 							</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<button type="button" name="button" id="btn-login" class="btn login_btn">Login</button>
+								<input type="submit" name="login" value="Login" id="btn-login" class="btn login_btn">
 				   			</div>
 						</form>
 					</div>
@@ -50,28 +59,3 @@
 		</div>
 	</body>
 </html>
-<script>
-    $(document).ready(function () {
-        $('#btn-login').click(function () {
-        });
-    });
-
-    // $.ajax({
-    //     url: 'login.php',
-    //     type: 'post',
-    //     dataType: 'json',
-    //     data: {},
-    //         beforeSend: function () {
-                
-    //         },
-    //         success: function(response){
-
-    //         },
-    //         error: function () {
-    //             alert('erro no codigo!')
-    //         },
-    //         complete: function () {
-                
-    //         }
-    // });
-</script>

@@ -1,15 +1,10 @@
 <?php
+    include('verificaLogin.php');
+    include('conexao.php');
     require_once 'classeQuery.php';
 
-    $newPdo          = new liberaAcessoEmpresas("organizations", "root", "");
     $listaDeEmpresas = $newPdo->buscaDadosEmpresas();
     $packets         = $newPdo->getPackets();
-    
-    // echo '<pre>';
-    // var_dump($packets);
-    // var_dump($pacote["name"]);
-    // echo '</pre>';
-    // exit;
     
     if (isset($_POST['id'])) {
         if ($_POST['action'] == 'bloquear') {
