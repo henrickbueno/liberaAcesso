@@ -1,15 +1,10 @@
 <?php
+    include('verificaLogin.php');
+    include('conexao.php');
     require_once 'classeQuery.php';
 
-    $newPdo          = new liberaAcessoEmpresas("organizations", "root", "");
     $listaDeEmpresas = $newPdo->buscaDadosEmpresas();
     $packets         = $newPdo->getPackets();
-    
-    // echo '<pre>';
-    // var_dump($packets);
-    // var_dump($pacote["name"]);
-    // echo '</pre>';
-    // exit;
     
     if (isset($_POST['id'])) {
         if ($_POST['action'] == 'bloquear') {
@@ -75,7 +70,7 @@
 
         <!-- FIM DO MODAL -->
         
-        <div class="card-body container">
+        <div class="card-body container" style=" max-width: 1550px; min-width: 1012px;">
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
